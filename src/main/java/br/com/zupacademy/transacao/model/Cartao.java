@@ -1,9 +1,14 @@
-package br.com.zupacademy.transacao.consumer.model;
+package br.com.zupacademy.transacao.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Entity
 public class Cartao {
+	@Id
 	private String id;
 	private String email;
 	
@@ -16,7 +21,7 @@ public class Cartao {
 	}
 	public String getEmail() {
 		return email;
-	}	
+	}
 
 	@Override
 	public String toString() {

@@ -1,19 +1,28 @@
-package br.com.zupacademy.transacao.consumer.model;
+package br.com.zupacademy.transacao.model;
 
 import java.math.BigDecimal;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class EventoDeTransacao {
+@Entity
+public class Transacao {
+	@Id
 	private String id;
 	private BigDecimal valor;
-	private Estabelecimento estabelecimento;
-	private Cartao cartao;
 	private String efetivadaEm;
+	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
+	private Estabelecimento estabelecimento;
+	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
+	private Cartao cartao;
 	
 	@Deprecated
-	public EventoDeTransacao() { }
+	public Transacao() { }
 
 	public String getId() {
 		return id;
@@ -23,16 +32,16 @@ public class EventoDeTransacao {
 		return valor;
 	}
 
+	public String getEfetivadaEm() {
+    	return efetivadaEm;
+	}
+
 	public Estabelecimento getEstabelecimento() {
 		return estabelecimento;
 	}
 
 	public Cartao getCartao() {
 		return cartao;
-	}
-
-	public String getEfetivadaEm() {
-    	return efetivadaEm;
 	}
 
 	@Override

@@ -1,9 +1,16 @@
-package br.com.zupacademy.transacao.consumer.model;
+package br.com.zupacademy.transacao.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Entity
 public class Estabelecimento {
+	@Id @GeneratedValue
+	private long id;
 	private String nome;
 	private String cidade;
 	private String endereco;
